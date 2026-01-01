@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import './ContactForm.css';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 function ContactForm() {
     const [formData, setFormData] = useState({
         name: '',
@@ -24,7 +26,7 @@ function ContactForm() {
         setStatus({ type: '', message: '' });
 
         try {
-            const response = await axios.post('http://localhost:5000/api/contact', formData);
+            const response = await axios.post(`${API_URL}/api/contact`, formData);
             setStatus({
                 type: 'success',
                 message: 'Thank you! Your message has been sent successfully.'
@@ -59,21 +61,21 @@ function ContactForm() {
                                 <div className="contact-icon">📧</div>
                                 <div>
                                     <h4>Email</h4>
-                                    <p>asteinwords@gmail.com</p>
+                                    <p>hello@example.com</p>
                                 </div>
                             </div>
                             <div className="contact-item">
                                 <div className="contact-icon">📱</div>
                                 <div>
                                     <h4>Phone</h4>
-                                    <p>+91 70415 32536</p>
+                                    <p>+1 (555) 123-4567</p>
                                 </div>
                             </div>
                             <div className="contact-item">
                                 <div className="contact-icon">📍</div>
                                 <div>
                                     <h4>Location</h4>
-                                    <p>Delhi, India</p>
+                                    <p>San Francisco, CA</p>
                                 </div>
                             </div>
                         </div>
